@@ -22,11 +22,20 @@ func commandCatch(cfg *config, params []string) error {
 
 	if resCatch {
 		fmt.Printf("%s was caught!\n", pokemon.Name)
+		evoChain, err := cfg.pokeapiClient.GetEvolutionChain(pokeURI)
+		if err != nil {
+			return err
+		}
+
+		pokemon.EvoChain = &evoChain
+
 		if _, ok := cfg.pokedex[pokemon.Name]; !ok {
 			cfg.pokedex[pokemon.Name] = pokemon
 		}
+
 	} else {
 		fmt.Printf("%s escaped!\n", pokemon.Name)
 	}
 	return nil
 }
+

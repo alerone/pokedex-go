@@ -10,7 +10,7 @@ type Pokemon struct {
 		Slot     int  `json:"slot"`
 	} `json:"abilities"`
 	BaseExperience int `json:"base_experience"`
-	Forms []struct {
+	Forms          []struct {
 		Name string `json:"name"`
 		URL  string `json:"url"`
 	} `json:"forms"`
@@ -48,8 +48,8 @@ type Pokemon struct {
 			} `json:"version_group"`
 		} `json:"version_group_details"`
 	} `json:"moves"`
-	Name          string `json:"name"`
-	Species   struct {
+	Name    string `json:"name"`
+	Species struct {
 		Name string `json:"name"`
 		URL  string `json:"url"`
 	} `json:"species"`
@@ -68,5 +68,6 @@ type Pokemon struct {
 			URL  string `json:"url"`
 		} `json:"type"`
 	} `json:"types"`
-	Weight int `json:"weight"`
+	Weight   int                 `json:"weight"`
+	EvoChain *EvolutionChainLink `json:"evolution_chain"`
 }
